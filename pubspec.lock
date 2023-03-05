@@ -123,6 +123,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.0"
+  numeral_system:
+    dependency: "direct main"
+    description:
+      name: numeral_system
+      sha256: "02a7aa1667bd99cb61ec7bef040f2ec5e353dcc59e2ad36042233c19df717656"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0+1"
   path:
     dependency: transitive
     description:
@@ -194,3 +202,4 @@ packages:
     version: "2.1.4"
 sdks:
   dart: ">=2.19.2 <3.0.0"
+  flutter: ">=1.17.0"
