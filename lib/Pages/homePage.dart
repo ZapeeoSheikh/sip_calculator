@@ -101,7 +101,7 @@ class HomePage extends StatelessWidget {
                           onTap: () {
                             AnimatedSnackBar.material(
                               'Sorry!! This Tab is under development',
-                              type: AnimatedSnackBarType.info,
+                              type: AnimatedSnackBarType.warning,
                             ).show(context);
                             // Navigator.push(context, MaterialPageRoute(builder: (context) => InflCal()));
                           },
