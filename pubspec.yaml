@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   auto_size_text: ^3.0.0
   numeral_system: ^2.0.0+1
+  animated_snack_bar: ^0.2.0
 
 dev_dependencies:
   flutter_test:

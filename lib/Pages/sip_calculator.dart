@@ -36,14 +36,14 @@ class _SipCalState extends State<SipCal> {
             "SIP Calculator",
             selectionColor: Colors.white,
           ),
-          backgroundColor: MyColor.mainColor1,
+          backgroundColor: MyColor.sipColor1,
         ),
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Image(image: AssetImage("images/chat.png")),
+                  Image(image: AssetImage("images/sip.png")),
                   Padding(
                     padding: const EdgeInsets.all(18.0),
                     child: Column(
@@ -55,7 +55,7 @@ class _SipCalState extends State<SipCal> {
                               child: Text(
                                 "Initial Investment Amount",
                                 style: TextStyle(
-                                    color: MyColor.mainColor1,
+                                    color: MyColor.sipColor1,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -67,7 +67,7 @@ class _SipCalState extends State<SipCal> {
                               child: TextField(
                                 controller: initialController,
                                 keyboardType: TextInputType.number,
-                                cursorColor: MyColor.mainColor1,
+                                cursorColor: MyColor.sipColor1,
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                         borderRadius:
@@ -85,13 +85,13 @@ class _SipCalState extends State<SipCal> {
                         //       width: MediaQuery.of(context).size.width/3,
                         //       child: Text(
                         //         "SWP Amount",
-                        //         style: TextStyle(color: MyColor.mainColor1, fontSize: 16, fontWeight: FontWeight.bold),
+                        //         style: TextStyle(color: MyColor.sipColor1, fontSize: 16, fontWeight: FontWeight.bold),
                         //       ),
                         //     ),
                         //     SizedBox(width: 30,),
                         //     Expanded(
                         //       child: TextField(
-                        //         cursorColor: MyColor.mainColor1,
+                        //         cursorColor: MyColor.sipColor1,
                         //         decoration: InputDecoration(
                         //           border: OutlineInputBorder(
                         //             borderRadius: BorderRadius.circular(20)
@@ -109,7 +109,7 @@ class _SipCalState extends State<SipCal> {
                               child: Text(
                                 "Rate of return (%)",
                                 style: TextStyle(
-                                    color: MyColor.mainColor1,
+                                    color: MyColor.sipColor1,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -121,7 +121,7 @@ class _SipCalState extends State<SipCal> {
                               child: TextField(
                                 controller: rateOfReturnController,
                                 keyboardType: TextInputType.number,
-                                cursorColor: MyColor.mainColor1,
+                                cursorColor: MyColor.sipColor1,
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                         borderRadius:
@@ -140,7 +140,7 @@ class _SipCalState extends State<SipCal> {
                               child: Text(
                                 "Duration",
                                 style: TextStyle(
-                                    color: MyColor.mainColor1,
+                                    color: MyColor.sipColor1,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -152,7 +152,7 @@ class _SipCalState extends State<SipCal> {
                               child: TextField(
                                 controller: durationController,
                                 keyboardType: TextInputType.number,
-                                cursorColor: MyColor.mainColor1,
+                                cursorColor: MyColor.sipColor1,
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                         borderRadius:
@@ -166,12 +166,12 @@ class _SipCalState extends State<SipCal> {
                             Text(
                               "Re-invest",
                               style: TextStyle(
-                                  color: MyColor.mainColor1,
+                                  color: MyColor.sipColor1,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold),
                             ),
                             Checkbox(
-                              activeColor: MyColor.mainColor2,
+                              activeColor: MyColor.sipColor2,
                                 value: reInvest,
                                 onChanged: (reinvest) {
                                   setState(() {
@@ -188,7 +188,7 @@ class _SipCalState extends State<SipCal> {
                                 height: 50,
                                 child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                        backgroundColor: MyColor.mainColor1),
+                                        backgroundColor: MyColor.sipColor1),
                                     onPressed: () {
                                       if (initialController.text != "" &&
                                           rateOfReturnController.text != "" &&
@@ -241,7 +241,7 @@ class _SipCalState extends State<SipCal> {
                               child: Text(
                                 "Invested Amount",
                                 style: TextStyle(
-                                    color: MyColor.mainColor1,
+                                    color: MyColor.sipColor1,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -252,7 +252,7 @@ class _SipCalState extends State<SipCal> {
                             AutoSizeText(
                               "Rs ",
                               style: TextStyle(
-                                color: MyColor.mainColor2,
+                                color: MyColor.sipColor2,
                                 fontSize: 16,
                               ),
                             ),
@@ -274,7 +274,7 @@ class _SipCalState extends State<SipCal> {
                               child: Text(
                                 "Muturity Value",
                                 style: TextStyle(
-                                    color: MyColor.mainColor1,
+                                    color: MyColor.sipColor1,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -285,7 +285,7 @@ class _SipCalState extends State<SipCal> {
                             AutoSizeText(
                               "Rs ",
                               style: TextStyle(
-                                color: MyColor.mainColor2,
+                                color: MyColor.sipColor2,
                                 fontSize: 16,
                               ),
                             ),
@@ -312,7 +312,7 @@ class _SipCalState extends State<SipCal> {
                                         child: Text(
                                           "Re-invested",
                                           style: TextStyle(
-                                              color: MyColor.mainColor1,
+                                              color: MyColor.sipColor1,
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -323,7 +323,7 @@ class _SipCalState extends State<SipCal> {
                                       AutoSizeText(
                                         "Rs ",
                                         style: TextStyle(
-                                          color: MyColor.mainColor2,
+                                          color: MyColor.sipColor2,
                                           fontSize: 16,
                                         ),
                                       ),
@@ -349,7 +349,7 @@ class _SipCalState extends State<SipCal> {
                             Text(
                               "Power of Compunding",
                               style: TextStyle(
-                                  color: MyColor.mainColor2.withOpacity(0.5),
+                                  color: MyColor.sipColor2.withOpacity(0.5),
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold),
                             ),
