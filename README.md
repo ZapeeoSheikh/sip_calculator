@@ -1,8 +1,14 @@
 # sip_calculator
 
+
 A new Flutter project.
 
 ## Getting Started
+
+Sample Project:
+
+![Without Reinvestement](images/Screen1.png)
+![With Reinvestement](images/Screen2.png)
 
 This project is a starting point for a Flutter application.
 
