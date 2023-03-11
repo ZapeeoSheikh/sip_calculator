@@ -21,7 +21,10 @@ class _SipCalState extends State<SipCal> {
   String muturityAmount = "";
   int rateOdReturn = 0;
   bool reInvest = false;
-  int reInvestAmount = 0;
+  bool isYear = false;
+  int reInvestedReturn = 0;
+  int reInvestedAmount = 0;
+  int DurationInYear = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +180,24 @@ class _SipCalState extends State<SipCal> {
                                   setState(() {
                                     reInvest = reinvest!;
                                   });
-                                })
+                                }),
+                            Spacer(),
+
+                            Text(
+                              "Duration ( years )",
+                              style: TextStyle(
+                                  color: MyColor.sipColor1,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Checkbox(
+                                activeColor: MyColor.sipColor2,
+                                value: isYear,
+                                onChanged: (reinvest) {
+                                  setState(() {
+                                    isYear = reinvest!;
+                                  });
+                                }),
                           ],
                         ),
 
@@ -198,11 +218,14 @@ class _SipCalState extends State<SipCal> {
                                               int.parse(initialController.text);
                                           totalAmount =
                                               int.parse(initialController.text);
-
+                                          if(isYear == true){
+                                            DurationInYear = int.parse(durationController.text) * 12;
+                                          }  else {
+                                            DurationInYear = int.parse(durationController.text) * 1;
+                                          }
+print(durationController.text);
                                           for (int i = 1;
-                                              i <=
-                                                  int.parse(
-                                                      durationController.text);
+                                              i <= DurationInYear;
                                               i++) {
                                             totalAmount = ((totalAmount *
                                                             int.parse(
@@ -212,16 +235,18 @@ class _SipCalState extends State<SipCal> {
                                                     .round() +
                                                 totalAmount;
                                             // totalAmount = profitAmount ;
+                                            // print(totalAmount);
                                           }
                                           if( reInvest == true ){
-                                          reInvestAmount = totalAmount * int.parse(durationController.text);
+                                          reInvestedAmount = initialAmount * DurationInYear;
+                                          reInvestedReturn = totalAmount * DurationInYear;
                                           }
                                           // rateOdReturn = (int.parse(rateOfReturnController.text) ;
                                           // totalAmount = int.parse(initialController.text) * rateOdReturn;
 
                                           print(initialAmount);
                                           print(totalAmount);
-                                          print(reInvestAmount);
+                                          print(reInvestedReturn);
                                         });
                                       }
                                     },
@@ -272,10 +297,10 @@ class _SipCalState extends State<SipCal> {
                             Container(
                               width: MediaQuery.of(context).size.width / 3,
                               child: Text(
-                                "Muturity Value",
+                                "Muturity Value of ${initialAmount}Rs after ${durationController.text}",
                                 style: TextStyle(
                                     color: MyColor.sipColor1,
-                                    fontSize: 16,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -310,7 +335,7 @@ class _SipCalState extends State<SipCal> {
                                             MediaQuery.of(context).size.width /
                                                 3,
                                         child: Text(
-                                          "Re-invested",
+                                          "Re-invested (I)",
                                           style: TextStyle(
                                               color: MyColor.sipColor1,
                                               fontSize: 16,
@@ -330,7 +355,44 @@ class _SipCalState extends State<SipCal> {
                                       NumeralSystem(
                                         numberSystem:
                                             NumberSystem.international,
-                                        digit: reInvestAmount,
+                                        digit: reInvestedAmount,
+                                        digitAfterDecimal:
+                                            DigitAfterDecimal.one,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                3,
+                                        child: Text(
+                                          "Re-invested (R)",
+                                          style: TextStyle(
+                                              color: MyColor.sipColor1,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      AutoSizeText(
+                                        "Rs ",
+                                        style: TextStyle(
+                                          color: MyColor.sipColor2,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      NumeralSystem(
+                                        numberSystem:
+                                            NumberSystem.international,
+                                        digit: reInvestedReturn,
                                         digitAfterDecimal:
                                             DigitAfterDecimal.one,
                                       ),

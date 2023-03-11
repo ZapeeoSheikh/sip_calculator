@@ -6,9 +6,14 @@ import 'package:sip_calculator/Pages/sip_calculator.dart';
 import '../ui kit/ui.dart';
 import 'InflationCalculator.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,10 +104,13 @@ class HomePage extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            AnimatedSnackBar.material(
-                              'Sorry!! This Tab is under development',
-                              type: AnimatedSnackBarType.warning,
-                            ).show(context);
+                            setState(() {
+                              AnimatedSnackBar.material(
+                                'Sorry!! This Tab is under development',
+                                type: AnimatedSnackBarType.warning,
+                              ).show(context);
+                            });
+
                             // Navigator.push(context, MaterialPageRoute(builder: (context) => InflCal()));
                           },
                           child: Container(
@@ -130,10 +138,13 @@ class HomePage extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: (){
-                            AnimatedSnackBar.material(
-                              'Sorry!! This Tab is under development',
-                              type: AnimatedSnackBarType.info,
-                            ).show(context);
+                            setState(() {
+                              AnimatedSnackBar.material(
+                                'Sorry!! This Tab is under development',
+                                type: AnimatedSnackBarType.info,
+                              ).show(context);
+                            });
+
                             // Navigator.push(context, MaterialPageRoute(builder: (context) => SipCal()));
                           },
                           child: Container(
