@@ -21,6 +21,7 @@ class _SipCalState extends State<SipCal> {
   String muturityAmount = "";
   int rateOdReturn = 0;
   bool reInvest = false;
+  bool isExpand = false;
   bool isYear = false;
   int reInvestedReturn = 0;
   int reInvestedAmount = 0;
@@ -337,86 +338,6 @@ class _SipCalState extends State<SipCal> {
                         SizedBox(
                           height: 20,
                         ),
-                        reInvest == true
-                            ? Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                3,
-                                        child: Text(
-                                          "Re-invested (I)",
-                                          style: TextStyle(
-                                              color: MyColor.sipColor1,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      AutoSizeText(
-                                        "Rs ",
-                                        style: TextStyle(
-                                          color: MyColor.sipColor2,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      NumeralSystem(
-                                        numberSystem:
-                                            NumberSystem.international,
-                                        digit: reInvestedAmount,
-                                        digitAfterDecimal:
-                                            DigitAfterDecimal.one,
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                3,
-                                        child: Text(
-                                          "Re-invested (R)",
-                                          style: TextStyle(
-                                              color: MyColor.sipColor1,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      AutoSizeText(
-                                        "Rs ",
-                                        style: TextStyle(
-                                          color: MyColor.sipColor2,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      NumeralSystem(
-                                        numberSystem:
-                                            NumberSystem.international,
-                                        digit: reInvestedReturn,
-                                        digitAfterDecimal:
-                                            DigitAfterDecimal.one,
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                ],
-                              )
-                            : Container(),
                         Column(
                           children: [
                             Row(
@@ -458,7 +379,109 @@ class _SipCalState extends State<SipCal> {
                             ),
                           ],
                         ),
-
+                        reInvest == true
+                            ?  ExpansionPanelList(
+                          elevation: 0,
+                          children: [
+                            ExpansionPanel(
+                              body: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        width:
+                                        MediaQuery.of(context).size.width /
+                                            3,
+                                        child: Text(
+                                          "Re-invested (I)",
+                                          style: TextStyle(
+                                              color: MyColor.sipColor1,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      AutoSizeText(
+                                        "Rs ",
+                                        style: TextStyle(
+                                          color: MyColor.sipColor2,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      NumeralSystem(
+                                        numberSystem:
+                                        NumberSystem.international,
+                                        digit: reInvestedAmount,
+                                        digitAfterDecimal:
+                                        DigitAfterDecimal.one,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        width:
+                                        MediaQuery.of(context).size.width /
+                                            3,
+                                        child: Text(
+                                          "Re-invested (R)",
+                                          style: TextStyle(
+                                              color: MyColor.sipColor1,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      AutoSizeText(
+                                        "Rs ",
+                                        style: TextStyle(
+                                          color: MyColor.sipColor2,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      NumeralSystem(
+                                        numberSystem:
+                                        NumberSystem.international,
+                                        digit: reInvestedReturn,
+                                        digitAfterDecimal:
+                                        DigitAfterDecimal.one,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                ],
+                              ),
+                              headerBuilder: (BuildContext context, bool isExpanded) {
+                                return Text(
+                                  "Advanced",
+                                  style: TextStyle(
+                                    color: MyColor.sipColor2,
+                                    fontSize: 15,
+                                  ),
+                                );
+                              },
+                              isExpanded: isExpand,
+                            )
+                          ],
+                          expansionCallback: (int item, bool status) {
+                            setState(() {
+                              isExpand = !status ;
+                            });
+                          },
+                        ) : Container(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -483,3 +506,4 @@ class _SipCalState extends State<SipCal> {
     );
   }
 }
+
