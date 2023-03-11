@@ -25,6 +25,8 @@ class _SipCalState extends State<SipCal> {
   int reInvestedReturn = 0;
   int reInvestedAmount = 0;
   int DurationInYear = 0;
+  int reInvestProfit = 0;
+  int InvestProfit = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -174,7 +176,7 @@ class _SipCalState extends State<SipCal> {
                                   fontWeight: FontWeight.bold),
                             ),
                             Checkbox(
-                              activeColor: MyColor.sipColor2,
+                                activeColor: MyColor.sipColor2,
                                 value: reInvest,
                                 onChanged: (reinvest) {
                                   setState(() {
@@ -182,7 +184,6 @@ class _SipCalState extends State<SipCal> {
                                   });
                                 }),
                             Spacer(),
-
                             Text(
                               "Duration ( years )",
                               style: TextStyle(
@@ -218,12 +219,15 @@ class _SipCalState extends State<SipCal> {
                                               int.parse(initialController.text);
                                           totalAmount =
                                               int.parse(initialController.text);
-                                          if(isYear == true){
-                                            DurationInYear = int.parse(durationController.text) * 12;
-                                          }  else {
-                                            DurationInYear = int.parse(durationController.text) * 1;
+                                          if (isYear == true) {
+                                            DurationInYear = int.parse(
+                                                    durationController.text) *
+                                                12;
+                                          } else {
+                                            DurationInYear = int.parse(
+                                                    durationController.text) *
+                                                1;
                                           }
-print(durationController.text);
                                           for (int i = 1;
                                               i <= DurationInYear;
                                               i++) {
@@ -237,16 +241,25 @@ print(durationController.text);
                                             // totalAmount = profitAmount ;
                                             // print(totalAmount);
                                           }
-                                          if( reInvest == true ){
-                                          reInvestedAmount = initialAmount * DurationInYear;
-                                          reInvestedReturn = totalAmount * DurationInYear;
+                                          if (reInvest == true) {
+                                            reInvestedAmount =
+                                                initialAmount * DurationInYear;
+                                            reInvestedReturn =
+                                                totalAmount * DurationInYear;
+
+                                            reInvestProfit = reInvestedReturn - reInvestedAmount;
+
+                                          } else{
+                                            InvestProfit = totalAmount - initialAmount;
+                                            reInvestProfit = 0;
+                                            reInvestedAmount = 0;
+                                            reInvestedReturn = 0;
                                           }
                                           // rateOdReturn = (int.parse(rateOfReturnController.text) ;
                                           // totalAmount = int.parse(initialController.text) * rateOdReturn;
-
-                                          print(initialAmount);
-                                          print(totalAmount);
-                                          print(reInvestedReturn);
+                                          // print(reInvestedAmount);
+                                          // print(reInvestedReturn);
+                                          // print(reInvestProfit);
                                         });
                                       }
                                     },
@@ -404,6 +417,47 @@ print(durationController.text);
                                 ],
                               )
                             : Container(),
+                        Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width:
+                                  MediaQuery.of(context).size.width /
+                                      3,
+                                  child: Text(
+                                    "Profit Amount",
+                                    style: TextStyle(
+                                        color: MyColor.sipColor1,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                AutoSizeText(
+                                  "Rs ",
+                                  style: TextStyle(
+                                    color: MyColor.sipColor2,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                NumeralSystem(
+                                  numberSystem:
+                                  NumberSystem.international,
+                                  digit: reInvest == true ? reInvestProfit : InvestProfit,
+                                  digitAfterDecimal:
+                                  DigitAfterDecimal.one,
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        ),
 
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
